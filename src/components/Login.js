@@ -1,6 +1,8 @@
+import React from "react";
 import { useState } from "react";
 import loginService from "../services/login";
 import noteService from "../services/notes";
+import { Form, Button } from "react-bootstrap";
 
 const Login = ({ setUser }) => {
 	const [username, setUsername] = useState("testUser");
@@ -28,27 +30,20 @@ const Login = ({ setUser }) => {
 	};
 
 	return (
-		<form onSubmit={handleLogin}>
-			<div>
-				username
-				<input
-					type="text"
-					value={username}
-					name="Username"
-					onChange={({ target }) => setUsername(target.value)}
-				/>
-			</div>
-			<div>
-				password
-				<input
-					type="password"
-					value={password}
-					name="Password"
-					onChange={({ target }) => setPassword(target.value)}
-				/>
-			</div>
-			<button type="submit">login</button>
-		</form>
+		<div>
+			<h2>login</h2>
+			<Form onSubmit={handleLogin}>
+				<Form.Group>
+					<Form.Label>username:</Form.Label>
+					<Form.Control type="text" name="username" />
+					<Form.Label>password:</Form.Label>
+					<Form.Control type="password" />
+					<Button variant="primary" type="submit">
+						login
+					</Button>
+				</Form.Group>
+			</Form>
+		</div>
 	);
 };
 
